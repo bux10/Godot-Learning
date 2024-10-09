@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxhgcxpamncmg"
-path="res://.godot/imported/slime_hurt_eyes.png-53dcce79e80dfe810412461d41fcce99.ctex"
+uid="uid://b0ghixno2lu6p"
+path="res://.godot/imported/Kelsey_head_crazy.png-0f65accfea24580a7848fbff1f6004d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Spites/Slime/slime_hurt_eyes.png"
-dest_files=["res://.godot/imported/slime_hurt_eyes.png-53dcce79e80dfe810412461d41fcce99.ctex"]
+source_file="res://Sprites/Kelsey/Kelsey_head_crazy.png"
+dest_files=["res://.godot/imported/Kelsey_head_crazy.png-0f65accfea24580a7848fbff1f6004d0.ctex"]
 
 [params]
 

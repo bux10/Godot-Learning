@@ -1,8 +1,15 @@
-[gd_scene format=3 uid="uid://bbdpyn4gcnttb"]
+[gd_scene load_steps=4 format=3 uid="uid://bbdpyn4gcnttb"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://rif5d84kqm8b" path="res://Scenes/Player.tscn" id="1_q47ds"]
+[ext_resource type="PackedScene" uid="uid://fneo8gou6yaw" path="res://Scenes/pine_tree.tscn" id="2_jp4yq"]
+[ext_resource type="PackedScene" uid="uid://nuistmv8ru8c" path="res://Scenes/mob.tscn" id="3_71igt"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(1, -4)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -10,3 +17,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="StaticBody2D" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(467, 376)
+
+[node name="Player" parent="." instance=ExtResource("1_q47ds")]
+position = Vector2(538, 366)
+
+[node name="Mob" parent="." instance=ExtResource("3_71igt")]
+position = Vector2(212, 277)

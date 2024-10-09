@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkey8"]
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(541, 362)
+position = Vector2(6.10352e-05, 2.00003)
 scale = Vector2(1.36, 1.36)
 script = ExtResource("1_m87pd")
 
@@ -16,6 +16,8 @@ script = ExtResource("1_m87pd")
 position = Vector2(0, -0.908386)
 scale = Vector2(2.08661, 2.19878)
 shape = SubResource("RectangleShape2D_nkey8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="HurtBox" type="Area2D" parent="."]
 scale = Vector2(1, 1.05376)
@@ -25,20 +27,11 @@ position = Vector2(7.09295e-06, -0.862061)
 scale = Vector2(2.08661, 2.08661)
 shape = SubResource("RectangleShape2D_nkey8")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(1, 1)
-
 [node name="ControllerComponent" parent="." instance=ExtResource("4_nqa7o")]
-scale = Vector2(1, 1)
+position = Vector2(-4.48788e-05, -2.24394e-05)
 
 [node name="ExperienceComponent" parent="." instance=ExtResource("2_r7qbx")]
 position = Vector2(-45.977, -61.2069)
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_766ie")]
 position = Vector2(-46, -47)
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -21.0
-offset_right = 20.0
-offset_bottom = 19.0
