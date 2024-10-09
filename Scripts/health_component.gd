@@ -2,12 +2,20 @@ class_name HealthComponent extends Node2D
 
 @export var health: float = 100.0
 @export var max_health: float = 100.0
+@export var show_progress_bar: bool = true
+
 @onready var parent = self.get_parent()
 @onready var progress_bar: ProgressBar = $ProgressBar
 
+
+
 func _ready() -> void:
-	progress_bar.max_value = max_health
-	progress_bar.value = max_health
+	if show_progress_bar == true:
+		progress_bar.max_value = max_health
+		progress_bar.value = max_health
+	else:
+		progress_bar.visible = false
+	
 
 func take_damage(amount: float) -> void:
 	health -= amount

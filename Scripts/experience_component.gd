@@ -8,9 +8,10 @@ class_name ExperienceComponent extends Node2D
 @onready var progress_bar: ProgressBar = $ProgressBar
 
 func _ready() -> void:
-	current experience = 0.0
+	current_experience = 0.0
 	current_level = 1
 	next_level = 100.0
+	progress_bar.value = current_experience
 
 func increase_experience(amount: float) -> void:
 	current_experience += amount
