@@ -25,7 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Trees" type="Node2D" parent="."]
+[node name="Trees" type="Node2D" parent="." groups=["Trees"]]
 y_sort_enabled = true
 
 [node name="StaticBody2D" parent="Trees" instance=ExtResource("2_jp4yq")]
@@ -70,9 +70,10 @@ position = Vector2(765, 908)
 [node name="StaticBody2D14" parent="Trees" instance=ExtResource("2_jp4yq")]
 position = Vector2(346, 947)
 
-[node name="Player" parent="." instance=ExtResource("1_q47ds")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_q47ds")]
 unique_name_in_owner = true
 position = Vector2(957, 540)
+collision_mask = 0
 
 [node name="Path2D" type="Path2D" parent="Player"]
 curve = SubResource("Curve2D_7n4at")
@@ -80,13 +81,14 @@ curve = SubResource("Curve2D_7n4at")
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 unique_name_in_owner = true
 position = Vector2(-756.618, -484.559)
-rotation = -0.00143953
+rotation = -0.00143963
 
-[node name="Mobs" type="Node2D" parent="."]
+[node name="Mobs" type="Node2D" parent="." groups=["Mobs"]]
 unique_name_in_owner = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.33
 autostart = true
 
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

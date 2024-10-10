@@ -2,6 +2,7 @@ class_name Mob extends CharacterBody2D
 
 @export var speed: float = 300.0
 @export var health: float = 3.0
+@export var experience: float = 5
 
 @onready var player = get_node("/root/Game/Player")
 
@@ -13,6 +14,10 @@ func _physics_process(delta: float) -> void:
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * speed
 	move_and_slide()
+	
+
+				
+		
 
 func take_damage(amount: float) -> void:
 	health -= amount
@@ -24,4 +29,14 @@ func take_damage(amount: float) -> void:
 		var smoke = SMOKE_EXPLOSION.instantiate()
 		get_parent().add_child(smoke)
 		smoke.global_position = global_position
-		player.find_child("ExperienceComponent").increase_experience(10)
+		player.find_child("ExperienceComponent").increase_experience(experience)
+
+
+func _on_timer_timeout() -> void:
+	const DAMAGE_RATE = 5.0
+	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
+	if overlapping_mobs.size() > 0:
+		for mob in overlapping_mobs:
+			#var groups = mob.get_groups()
+			if "Player" in mob.get_groups():
+				player.find_child("HealthComponent").take_damage(DAMAGE_RATE)

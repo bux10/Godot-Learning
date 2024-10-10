@@ -1,12 +1,13 @@
 class_name HealthComponent extends Node2D
 
+signal health_deleted
+
 @export var health: float = 100.0
 @export var max_health: float = 100.0
 @export var show_progress_bar: bool = true
 
 @onready var parent: CharacterBody2D = self.get_parent()
 @onready var progress_bar: ProgressBar = $ProgressBar
-
 
 
 func _ready() -> void:
@@ -20,6 +21,9 @@ func _ready() -> void:
 func take_damage(amount: float) -> void:
 	health -= amount
 	progress_bar.value = health
+	
+	if health <= 0.0:
+		health_deleted.emit()
 	
 func take_healing(amount: float) -> void:
 	health += amount

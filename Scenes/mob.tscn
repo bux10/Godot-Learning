@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://nuistmv8ru8c"]
+[gd_scene load_steps=5 format=3 uid="uid://nuistmv8ru8c"]
 
 [ext_resource type="Script" path="res://Scripts/mob.gd" id="1_1okbi"]
 [ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://Scenes/slime.tscn" id="1_i3xuj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4nqrt"]
 radius = 52.0096
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_adbwq"]
+radius = 54.0833
 
 [node name="Mob" type="CharacterBody2D"]
 position = Vector2(0, -2)
@@ -16,3 +19,16 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -28)
 shape = SubResource("CircleShape2D_4nqrt")
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, -27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_adbwq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.33
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

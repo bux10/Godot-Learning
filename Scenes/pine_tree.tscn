@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_164l8"]
 radius = 31.0
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" groups=["Trees"]]
 
 [node name="GroundShadow" type="Sprite2D" parent="."]
 modulate = Color(0.790818, 0.922526, 1, 1)

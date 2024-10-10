@@ -19,18 +19,17 @@ script = ExtResource("1_m87pd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.48788e-05, -19.853)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_xtfoc")
 
 [node name="HappyBoo" parent="." instance=ExtResource("2_c78ul")]
 unique_name_in_owner = true
-scale = Vector2(1, 1)
 
 [node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(-4.57764e-05, -18.3824)
 scale = Vector2(1, 1.05376)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-4.48788e-05, -18.8401)
+position = Vector2(-1.09139e-11, 1.39556)
 scale = Vector2(2.08661, 2.08661)
 shape = SubResource("CircleShape2D_ux45u")
 
@@ -44,3 +43,5 @@ position = Vector2(-46.3236, -111.765)
 position = Vector2(-46.3236, -100)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="health_deleted" from="HealthComponent" to="." method="_on_health_component_health_deleted"]
