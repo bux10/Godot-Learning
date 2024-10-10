@@ -4,7 +4,7 @@ class_name HealthComponent extends Node2D
 @export var max_health: float = 100.0
 @export var show_progress_bar: bool = true
 
-@onready var parent = self.get_parent()
+@onready var parent: CharacterBody2D = self.get_parent()
 @onready var progress_bar: ProgressBar = $ProgressBar
 
 

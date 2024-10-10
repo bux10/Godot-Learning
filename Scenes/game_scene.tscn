@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbdpyn4gcnttb"]
+[gd_scene load_steps=5 format=3 uid="uid://bbdpyn4gcnttb"]
 
+[ext_resource type="Script" path="res://Scripts/game_scene.gd" id="1_h0vru"]
 [ext_resource type="PackedScene" uid="uid://rif5d84kqm8b" path="res://Scenes/Player.tscn" id="1_q47ds"]
 [ext_resource type="PackedScene" uid="uid://fneo8gou6yaw" path="res://Scenes/pine_tree.tscn" id="2_jp4yq"]
-[ext_resource type="PackedScene" uid="uid://nuistmv8ru8c" path="res://Scenes/mob.tscn" id="3_71igt"]
+
+[sub_resource type="Curve2D" id="Curve2D_7n4at"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -756.618, -484.559, 0, 0, 0, 0, 775.735, -486.765, 0, 0, 0, 0, 773.529, 457.353, 0, 0, 0, 0, -758.823, 452.941, 0, 0, 0, 0, -760.294, -483.088)
+}
+point_count = 5
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(1, -4)
+script = ExtResource("1_h0vru")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -22,10 +29,64 @@ grow_vertical = 2
 y_sort_enabled = true
 
 [node name="StaticBody2D" parent="Trees" instance=ExtResource("2_jp4yq")]
-position = Vector2(467, 376)
+position = Vector2(205, 540)
+
+[node name="StaticBody2D2" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(290, 569)
+
+[node name="StaticBody2D3" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(303, 280)
+
+[node name="StaticBody2D4" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(762, 213)
+
+[node name="StaticBody2D5" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(842, 215)
+
+[node name="StaticBody2D6" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(788, 264)
+
+[node name="StaticBody2D7" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(1370, 386)
+
+[node name="StaticBody2D8" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(1743, 881)
+
+[node name="StaticBody2D9" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(1538, 924)
+
+[node name="StaticBody2D10" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(1429, 339)
+
+[node name="StaticBody2D11" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(1778, 240)
+
+[node name="StaticBody2D12" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(697, 825)
+
+[node name="StaticBody2D13" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(765, 908)
+
+[node name="StaticBody2D14" parent="Trees" instance=ExtResource("2_jp4yq")]
+position = Vector2(346, 947)
 
 [node name="Player" parent="." instance=ExtResource("1_q47ds")]
-position = Vector2(538, 366)
+unique_name_in_owner = true
+position = Vector2(957, 540)
 
-[node name="Mob" parent="." instance=ExtResource("3_71igt")]
-position = Vector2(212, 277)
+[node name="Path2D" type="Path2D" parent="Player"]
+curve = SubResource("Curve2D_7n4at")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-756.618, -484.559)
+rotation = -0.00143953
+
+[node name="Mobs" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.33
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
