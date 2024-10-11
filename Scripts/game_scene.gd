@@ -5,6 +5,15 @@ const max_mobs = 20
 
 @onready var player: Player = %Player
 
+@onready var level_display: Label = $LevelUI/LevelDisplay
+
+
+
+func _process(delta: float) -> void:
+	var player_level = player.find_child("ExperienceComponent").current_level
+	level_display.text = "Level: " + str(player_level)
+	pass
+
 func spawn_mob() -> void:
 	const MOB = preload("res://Scenes/mob.tscn")
 	var new_mob = MOB.instantiate()

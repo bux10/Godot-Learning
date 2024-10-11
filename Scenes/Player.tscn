@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://rif5d84kqm8b"]
+[gd_scene load_steps=9 format=3 uid="uid://rif5d84kqm8b"]
 
 [ext_resource type="PackedScene" uid="uid://1txt5bmjhjtb" path="res://Scenes/health_component.tscn" id="1_766ie"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_m87pd"]
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://Scenes/happy_boo.tscn" id="2_c78ul"]
 [ext_resource type="PackedScene" uid="uid://xp7xsefcymbc" path="res://Scenes/experience_component.tscn" id="2_r7qbx"]
 [ext_resource type="PackedScene" uid="uid://0f63valgev2r" path="res://Scenes/controller_component.tscn" id="4_nqa7o"]
+[ext_resource type="PackedScene" uid="uid://dhx8su0v8dp6k" path="res://Scenes/gun.tscn" id="6_qtjmt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xtfoc"]
 radius = 36.7721
@@ -16,6 +17,7 @@ radius = 17.267
 position = Vector2(6.10352e-05, 2.00003)
 scale = Vector2(1.36, 1.36)
 script = ExtResource("1_m87pd")
+damage_amount = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.48788e-05, -19.853)
@@ -27,6 +29,8 @@ unique_name_in_owner = true
 [node name="HurtBox" type="Area2D" parent="."]
 position = Vector2(-4.57764e-05, -18.3824)
 scale = Vector2(1, 1.05376)
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-1.09139e-11, 1.39556)
@@ -37,11 +41,19 @@ shape = SubResource("CircleShape2D_ux45u")
 position = Vector2(-4.48788e-05, -2.24394e-05)
 
 [node name="ExperienceComponent" parent="." instance=ExtResource("2_r7qbx")]
-position = Vector2(-46.3236, -111.765)
+position = Vector2(-46.3236, -142.647)
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_766ie")]
-position = Vector2(-46.3236, -100)
+position = Vector2(-46.3236, -130.882)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Gun" parent="." instance=ExtResource("6_qtjmt")]
+position = Vector2(-4.48788e-05, -22.0588)
+
+[node name="Gun2" parent="." instance=ExtResource("6_qtjmt")]
+visible = false
+position = Vector2(-0.735339, -19.853)
+target = -1
 
 [connection signal="health_deleted" from="HealthComponent" to="." method="_on_health_component_health_deleted"]
